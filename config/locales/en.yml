@@ -23,16 +23,32 @@ en:
         many: Pages
         one: Page
         other: Pages
+      spree/blog:
+        few: Blogs
+        many: Blogs
+        one: Blog
+        other: Blogs
   spree:
     admin:
       tab:
         pages: Pages
+        blogs: Blogs
+        contents: Contents
     back_to_static_pages_list: "Back to static pages list"
     page: Page
+    content: Content
+    contents: Contents
+    new_blog: New Blog
+    blogs: Blogs
     pages: Pages
     stores: Stores
     static_pages: Static pages
-    new_page: New page
+    new_page: New Page
     editing_page: Editing page
     link: Link
     add_one: Create One
+    remove_image: Image Removed Successfully
+    edit_blog: Edit Blog
+    statuses:
+      draft: Draft
+      publish: Publish
