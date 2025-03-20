@@ -1,0 +1,25 @@
+<%= render 'spree/admin/shared/blogs_tabs' %>
+
+<% admin_breadcrumb(t('spree.contents')) %>
+<% admin_breadcrumb(link_to plural_resource_name(Spree::Blog), spree.admin_blogs_path) %>
+<% admin_breadcrumb(@blog.title) %>
+
+<% content_for :page_title do %>
+  <%= t("spree.edit_blog") %>
+<% end %>
+
+<%= render "spree/shared/error_messages", :target => @blog %>
+
+<div data-hook='admin_blog_edit_form'>
+  <%= form_for [:admin, @blog] do |f| %>
+    <fieldset class='no-border-top'>
+      <%= render partial: 'form', locals: { f: f, resource: @blog } %>
+      <div class='clear'></div>
+      <% if can?(:update, Spree::Blog) %>
+        <div data-hook='admin_blog_edit_form_buttons'>
+          <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+        </div>
+      <% end %>
+    </fieldset>
+  <% end %>
+</div>
