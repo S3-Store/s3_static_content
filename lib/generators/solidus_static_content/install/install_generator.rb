@@ -9,7 +9,7 @@ module SolidusStaticContent
       class_option :frontend, type: :string, default: 'classic'
 
       def add_stylesheets
-        inject_into_file 'vendor/assets/stylesheets/spree/frontend/all.css', " *= require spree/frontend/solidus_static_content\n", before: %r{\*/}, verbose: true # rubocop:disable Metrics/LineLength
+        inject_into_file 'vendor/assets/stylesheets/spree/frontend/all.css', " *= require spree/frontend/solidus_static_content\n", before: %r{\*/}, verbose: true # rubocop:disable Layout/LineLength
       end
 
       def add_migrations
@@ -17,6 +17,7 @@ module SolidusStaticContent
       end
 
       def add_javascripts
+        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/solidus_static_content\n"
         empty_directory 'app/assets/javascripts'
       end
 
@@ -42,7 +43,7 @@ module SolidusStaticContent
       end
 
       def run_migrations
-        run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask('Would you like to run the migrations now? [Y/n]')) # rubocop:disable Metrics/LineLength
+        run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask('Would you like to run the migrations now? [Y/n]')) # rubocop:disable Layout/LineLength
         if run_migrations
           run 'bin/rails db:migrate'
         else
